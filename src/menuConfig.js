@@ -33,7 +33,7 @@ const asideMenuConfig = [
     children: [
       {
         name: '平台概况',
-        path: '/',
+        path: '/admin',
       },
       {
         name: '数据监控',
@@ -42,22 +42,37 @@ const asideMenuConfig = [
     ],
   },
   {
-    name: '客户信息',
+    name: '博文',
+    path: '/admin/post',
+    icon: 'yonghu',
+    children: [
+      {
+        name: '博文配置',
+        path: '/admin/post/list',
+      },
+      {
+        name: '博文添加',
+        path: '/admin/post/add',
+      },
+    ],
+  },
+  {
+    name: '评论',
     path: '/message',
     icon: 'yonghu',
     children: [
       {
-        name: '评论信息',
-        path: '/message/comment',
+        name: '评论配置',
+        path: '/message/list',
       },
       {
-        name: '客户反馈',
+        name: '博文添加',
         path: '/message/feedback',
       },
     ],
   },
   {
-    name: '通用设置',
+    name: '设置',
     path: '/setting',
     icon: 'shezhi',
     children: [
@@ -70,36 +85,6 @@ const asideMenuConfig = [
         path: '/setting/navigation',
       },
     ],
-  },
-  {
-    name: '\u767B\u5F55',
-    path: '/me/login',
-    icon: 'home',
-  },
-  {
-    name: '\u9996\u9875',
-    path: '/homepage',
-    icon: 'home',
-  },
-  {
-    name: '\u535A\u6587',
-    path: '/blog',
-    icon: 'home',
-  },
-  {
-    name: '\u6587\u7AE0',
-    path: '/post/:id',
-    icon: 'home',
-  },
-  {
-    name: '\u9879\u76EE',
-    path: '/project',
-    icon: 'home',
-  },
-  {
-    name: '\u5173\u4E8E',
-    path: '/about',
-    icon: 'home',
   },
 ];
 

@@ -10,20 +10,21 @@ import Homepage from './pages/Homepage';
 import Blog from './pages/Blog';
 import Post from './pages/Post';
 import Project from './pages/Project';
-import HeaderFooterLayout from './layouts/HeaderFooterLayout';
 import About from './pages/About';
+import PostsTable from './pages/PostsTable';
+import PostsAdd from './pages/PostsAdd';
 import NotFound from './pages/NotFound';
 
 const routerConfig = [
   {
-    path: '/',
-    layout: AsideLayout,
-    component: Home,
+    path: '/project',
+    layout: BlankLayout,
+    component: Project,
   },
   {
-    path: '/me/login',
-    layout: BlankLayout,
-    component: MeLogin,
+    path: '/admin',
+    layout: AsideLayout,
+    component: Home,
   },
   {
     path: '/homepage',
@@ -41,9 +42,9 @@ const routerConfig = [
     component: Post,
   },
   {
-    path: '/project',
+    path: '/',
     layout: BlankLayout,
-    component: Project,
+    component: Homepage,
   },
   {
     path: '/about',
@@ -51,8 +52,23 @@ const routerConfig = [
     component: About,
   },
   {
-    path: '*',
+    path: '/me/login',
+    layout: BlankLayout,
+    component: MeLogin,
+  },
+  {
+    path: '/admin/post/list',
     layout: AsideLayout,
+    component: PostsTable,
+  },
+  {
+    path: '/admin/post/add',
+    layout: AsideLayout,
+    component: PostsAdd,
+  },
+  {
+    path: '*',
+    layout: BlankLayout,
     component: NotFound,
   },
 ];

@@ -14,16 +14,22 @@
     "@icedesign/layout": "^0.1.2",
     "@icedesign/menu": "^0.1.1",
     "@icedesign/skin": "^0.1.0",
+    "axios": "^0.17.1",
     "bizcharts": "^3.1.5",
     "classnames": "^2.2.6",
     "enquire-js": "^0.1.3",
     "foundation-symbol": "^0.1.3",
+    "immutable": "^3.8.2",
+    "is-hotkey": "^0.1.2",
     "prop-types": "^15.6.1",
     "react": "^16.4.0",
     "react-document-title": "^2.0.3",
     "react-markdown": "^3.3.2",
     "react-router": "^4.2.0",
-    "react-router-dom": "^4.2.2"
+    "react-router-dom": "^4.2.2",
+    "slate": "^0.32.5",
+    "slate-plain-serializer": "^0.5.12",
+    "slate-react": "^0.11.6"
   },
   "publishConfig": {
     "registry": "http://registry.npmjs.com",
