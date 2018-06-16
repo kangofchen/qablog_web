@@ -182,6 +182,7 @@ export default class RichEditor extends Component {
     };
 
     renderMarkButton = (type, icon) => {
+        console.log("renderMarkButton" + type, icon);
         const isActive = this.hasMark(type);
         const onMouseDown = (event) => this.onClickMark(event, type);
 
@@ -227,12 +228,12 @@ export default class RichEditor extends Component {
                     <span className="material-icons">{icon}</span>
                 </span>
                 {/*<div style={{marginTop: "20px"}}>*/}
-                    {/*<img*/}
-                        {/*ref="targetViewer"*/}
-                        {/*src="https://img.alicdn.com/tps/TB19O79MVXXXXcZXVXXXXXXXXXX-1024-1024.jpg"*/}
-                        {/*width="120px"*/}
-                        {/*height="120px"*/}
-                    {/*/>*/}
+                {/*<img*/}
+                {/*ref="targetViewer"*/}
+                {/*src="https://img.alicdn.com/tps/TB19O79MVXXXXcZXVXXXXXXXXXX-1024-1024.jpg"*/}
+                {/*width="120px"*/}
+                {/*height="120px"*/}
+                {/*/>*/}
                 {/*</div>*/}
                 {/* trigger end */}
             </CropUpload>
@@ -256,6 +257,7 @@ export default class RichEditor extends Component {
             case 'numbered-list':
                 return <ol {...attributes}>{children}</ol>;
             case 'image':
+                console.log(attributes);
                 return (
                     <figure {...attributes}>
                         <img src={children}/>

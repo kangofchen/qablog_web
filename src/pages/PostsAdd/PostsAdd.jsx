@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ContentEditor from './components/ContentEditor';
+import Images from "./components/ImageEdit/Images";
 
 export default class PostsAdd extends Component {
   static displayName = 'PostsAdd';
@@ -13,6 +14,8 @@ export default class PostsAdd extends Component {
     return (
       <div className="posts-add-page">
         <ContentEditor />
+
+        <Images/>
       </div>
     );
   }
