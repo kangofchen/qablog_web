@@ -1,22 +1,25 @@
-import React, { Component } from 'react';
-import ContentEditor from './components/ContentEditor';
-import Images from "./components/ImageEdit/Images";
+import React, {Component} from 'react';
+import Test from "./components/LZEdit/Edit";
 
 export default class PostsAdd extends Component {
-  static displayName = 'PostsAdd';
+    static displayName = 'PostsAdd';
 
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
 
-  render() {
-    return (
-      <div className="posts-add-page">
-        <ContentEditor />
+    render() {
+        return (
+            <div className="posts-add-page">
+                {/*<ContentEditor />*/}
 
-        <Images/>
-      </div>
-    );
-  }
+
+                <Test/>
+
+            </div>
+        );
+    }
 }
+
+
