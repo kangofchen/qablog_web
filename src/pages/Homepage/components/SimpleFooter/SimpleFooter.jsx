@@ -35,18 +35,18 @@ export default class SimpleFooter extends Component {
                         <Col l="20" xxs="24">
                             <div style={styles.nav}>
                                 <Link to="/homepage" style={styles.navLink}>
-                                    home
+                                    HOME
                                 </Link>
                                 <Link to="/blog" style={styles.navLink}>
-                                    blog
+                                    BLOG
                                 </Link>
                                 <Link to="/project" style={styles.navLink}>
-                                    project
+                                    PROJECT
                                 </Link>
                                 <Link to="/about" style={styles.navLink}>
-                                    about
+                                    ABOUT
                                 </Link>
-                                <Button type="primary" size="small" href="/#/me/login" component="a">sign in</Button>
+                                <Button type="primary" size="small" href="/#/me/login" component="a">SIGN IN</Button>
                             </div>
                         </Col>
                     </Row>

@@ -100,7 +100,7 @@ export default class CustomBraftEditor extends Component {
         };
 
         const editorPropsDisplay = {
-            height: 1000,
+            height: 0,
             contentFormat: 'html',
             disabled: true,
             controls: [],

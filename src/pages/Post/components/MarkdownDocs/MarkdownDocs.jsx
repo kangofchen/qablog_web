@@ -45,7 +45,7 @@ const initialSource = `
 
 ![](https://gw.alipayobjects.com/zos/skylark/public/files/5272d5041de283125ac03428a6e0ed4f.png)`;
 
-const initialSourceHtml = `<div><p>test1</p><p>test2</p><p>test3</p></div>`;
+// const initialSourceHtml = `<div><p>test1</p><p>test2</p><p>test3</p></div>`;
 
 export default class MarkdownDocs extends Component {
   static displayName = 'MarkdownDocs';
@@ -62,8 +62,8 @@ export default class MarkdownDocs extends Component {
   render() {
     return (
       <div>
-          <pre>{initialSourceHtml}</pre>
-          <span dangerouslySetInnerHTML={{__html: initialSourceHtml}} />
+          {/*<pre>{initialSourceHtml}</pre>*/}
+          {/*<span dangerouslySetInnerHTML={{__html: initialSourceHtml}} />*/}
         <ReactMarkdown className="markdown-docs-body" source={initialSource} />
       </div>
     );
