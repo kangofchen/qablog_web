@@ -31,10 +31,10 @@ export default class LandingIntroBanner extends Component {
           >
             <div>
               <h2 style={styles.title}>
-                更快，更优，更 Cool !<br />欢迎使用 ICE
+                开源项目、改造开源项目!<br />欢迎使用
               </h2>
               <div style={styles.buttons}>
-                <a href="#">
+                <a href="/#/project">
                   <Button
                     style={{
                       margin: '0 10px 20px',
@@ -50,7 +50,7 @@ export default class LandingIntroBanner extends Component {
                     查看帮助
                   </Button>
                 </a>
-                <a href="#">
+                <a href="https://github.com/kangofchen?tab=repositories" target="_blank">
                   <Button
                     style={{
                       margin: '0 10px 20px',

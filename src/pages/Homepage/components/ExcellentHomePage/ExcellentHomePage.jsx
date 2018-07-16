@@ -27,15 +27,15 @@ export default class ExcellentHomePage extends Component {
                 <div className="excellent-home-page-background"/>
                 <div className="excellent-home-page-content-wrapper">
                     <div className="excellent-home-page-content">
-                        <h2 className="title">新淘宝 新体验</h2>
+                        <h2 className="title">测试之路</h2>
                         <p className="subtitle">
-                            新的开放能力赋能商家、ISV，使用手机淘宝帮助用户获得更出色的使用体验
+                            记录点滴进步、记录瞬间灵感、记录我的测试之路
                         </p>
                         <div
                             className="excellent-home-page-buttons"
                             style={{textAlign: 'center', marginTop: 70}}
                         >
-                            <a href="/framework/">
+                            <a href="/#/blog/">
                                 <Button
                                     style={{
                                         height: 50,
@@ -47,7 +47,7 @@ export default class ExcellentHomePage extends Component {
                                     type="primary"
                                     size="large"
                                 >
-                                    快速上手
+                                    博文查看
                                     <div
                                         style={{
                                             marginLeft: '5px',

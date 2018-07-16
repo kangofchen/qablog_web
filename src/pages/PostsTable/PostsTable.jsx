@@ -1,19 +1,24 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import TabTable from './components/TabTable';
+import analyse from "../../components/analyse";
 
 export default class PostsTable extends Component {
-  static displayName = 'PostsTable';
+    static displayName = 'PostsTable';
 
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
 
-  render() {
-    return (
-      <div className="posts-table-page">
-        <TabTable />
-      </div>
-    );
-  }
+    componentWillMount() {
+        analyse.send()
+    }
+
+    render() {
+        return (
+            <div className="posts-table-page">
+                <TabTable/>
+            </div>
+        );
+    }
 }
