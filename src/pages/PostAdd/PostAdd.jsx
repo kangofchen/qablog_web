@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import BraftEditor from './components/BraftEditor';
 import analyse from "../../components/analyse";
+import ContentEditor from "./components/ContentEditor/ContentEditor";
 
 export default class PostAdd extends Component {
     static displayName = 'PostAdd';
@@ -17,7 +18,8 @@ export default class PostAdd extends Component {
     render() {
         return (
             <div className="post-add-page">
-                <BraftEditor/>
+                <ContentEditor/>
+                {/*<BraftEditor/>*/}
             </div>
         );
     }

@@ -157,7 +157,7 @@ export default class HeaderAsideFooterResponsiveLayout extends Component {
           <Layout.Main scrollable style={{ paddingRight: 20, paddingTop: 20 }}>
             {this.props.children}
 
-            <Footer />
+            {/*<Footer />*/}
           </Layout.Main>
         </Layout.Section>
       </Layout>

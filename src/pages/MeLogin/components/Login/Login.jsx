@@ -60,45 +60,13 @@ export default class Login extends Component {
         }
         return (
             <div style={styles.container} className="user-login">
-                <div style={styles.header}>
-                    <a href="#" style={styles.meta}>
-                        <img
-                            style={styles.logo}
-                            src="https://img.alicdn.com/tfs/TB13UQpnYGYBuNjy0FoXXciBFXa-242-134.png"
-                            alt="logo"
-                        />
-                        <span style={styles.title}>飞冰</span>
-                    </a>
-                    <p style={styles.desc}>飞冰让前端开发简单而友好</p>
-                </div>
                 <div style={styles.formContainer}>
-                    <h4 style={styles.formTitle}>登 录</h4>
                     <IceFormBinderWrapper
                         value={this.state.value}
                         onChange={this.formChange}
                         ref="form"
                     >
-                        <div style={styles.formItems}>
-                            <Row style={styles.formItem}>
-                                <Col style={styles.formItemCol}>
-                                    <IceIcon
-                                        type="person"
-                                        size="small"
-                                        style={styles.inputIcon}
-                                    />
-                                    <IceFormBinder name="account" required message="必填">
-                                        <Input
-                                            size="large"
-                                            maxLength={20}
-                                            placeholder="管理员账号"
-                                        />
-                                    </IceFormBinder>
-                                </Col>
-                                <Col>
-                                    <IceFormError name="account"/>
-                                </Col>
-                            </Row>
-
+                        <div>
                             <Row style={styles.formItem}>
                                 <Col style={styles.formItemCol}>
                                     <IceIcon type="lock" size="small" style={styles.inputIcon}/>
@@ -106,7 +74,7 @@ export default class Login extends Component {
                                         <Input
                                             size="large"
                                             htmlType="password"
-                                            placeholder="密码"
+                                            placeholder="UHKO-OLKE-OPSD-UUQP-BNCX-ZMRD"
                                         />
                                     </IceFormBinder>
                                 </Col>
@@ -116,31 +84,13 @@ export default class Login extends Component {
                             </Row>
 
                             <Row style={styles.formItem}>
-                                <Col>
-                                    <IceFormBinder name="checkbox">
-                                        <Checkbox style={styles.checkbox}>记住账号</Checkbox>
-                                    </IceFormBinder>
-                                </Col>
-                            </Row>
-
-                            <Row style={styles.formItem}>
                                 <Button
-                                    type="primary"
+                                    type="light" shape="ghost"
                                     onClick={this.handleSubmit}
                                     style={styles.submitBtn}
                                 >
                                     登 录
                                 </Button>
-                            </Row>
-
-                            <Row className="tips" style={styles.tips}>
-                                <a href="/" style={styles.link}>
-                                    立即注册
-                                </a>
-                                <span style={styles.line}>|</span>
-                                <a href="/" style={styles.link}>
-                                    忘记密码
-                                </a>
                             </Row>
                         </div>
                     </IceFormBinderWrapper>
@@ -222,7 +172,7 @@ const styles = {
         fontSize: '16px',
         height: '40px',
         lineHeight: '40px',
-        background: '#3080fe',
+        // background: '#3080fe',
         borderRadius: '4px',
     },
     checkbox: {

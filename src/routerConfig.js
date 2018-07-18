@@ -16,11 +16,11 @@ import PostAdd from './pages/PostAdd';
 import NotFound from './pages/NotFound';
 
 const routerConfig = [
-  {
-    path: '/about',
-    layout: BlankLayout,
-    component: About,
-  },
+  // {
+  //   path: '/about',
+  //   layout: BlankLayout,
+  //   component: About,
+  // },
   {
     path: '/project',
     layout: BlankLayout,

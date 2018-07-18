@@ -19,16 +19,16 @@ export default class CustomBraftEditor extends Component {
     }
 
     handleRawChange = (content) => {
-        console.log(content);
+        // console.log(content);
     };
 
-    handleChange = (rawContent) => {
-        console.log(rawContent);
-        this.setState({
-            content: rawContent,
-            contentId: rawContent,
-        })
-    };
+    // handleChange = (rawContent) => {
+    //     console.log(rawContent);
+    //     this.setState({
+    //         content: rawContent,
+    //         contentId: rawContent,
+    //     })
+    // };
 
     // 示例，不允许选择大于100K的文件
     validateFn = (file) => {
@@ -91,7 +91,7 @@ export default class CustomBraftEditor extends Component {
             height: 500,
             contentFormat: 'html',
             initialContent: '<p></p>',
-            onChange: this.handleChange,
+            onChange: this.props.onChange,
             onRawChange: this.handleRawChange,
             media: {
                 // validateFn: this.validateFn,
@@ -99,22 +99,18 @@ export default class CustomBraftEditor extends Component {
             }
         };
 
-        const editorPropsDisplay = {
-            height: 0,
-            contentFormat: 'html',
-            disabled: true,
-            controls: [],
-            initialContent: this.state.content,
-            contentId: this.state.contentId,
-        };
+        // const editorPropsDisplay = {
+        //     height: 0,
+        //     contentFormat: 'html',
+        //     disabled: true,
+        //     controls: [],
+        //     initialContent: this.state.content,
+        //     contentId: this.state.contentId,
+        // };
 
         return (
             <IceContainer>
                 <BraftEditor {...editorProps} />
-                <p></p>
-                <p>##################################</p>
-                <p></p>
-                <BraftEditor {...editorPropsDisplay} />
             </IceContainer>
         );
     }

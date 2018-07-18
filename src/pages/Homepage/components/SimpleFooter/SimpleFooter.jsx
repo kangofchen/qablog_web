@@ -43,9 +43,9 @@ export default class SimpleFooter extends Component {
                                 <Link to="/project" style={styles.navLink}>
                                     PROJECT
                                 </Link>
-                                <Link to="/about" style={styles.navLink}>
-                                    ABOUT
-                                </Link>
+                                {/*<Link to="/about" style={styles.navLink}>*/}
+                                    {/*ABOUT*/}
+                                {/*</Link>*/}
                                 <Button type="primary" size="small" href="/#/me/login" component="a">SIGN IN</Button>
                             </div>
                         </Col>

@@ -24,40 +24,40 @@ export default class Header extends PureComponent {
           style={{ display: 'flex' }}
         >
           {/* Header 菜单项 begin */}
-          {headerMenuConfig && headerMenuConfig.length > 0 ? (
-            <Menu mode="horizontal" selectedKeys={[]}>
-              {headerMenuConfig.map((nav, idx) => {
-                const linkProps = {};
-                if (nav.newWindow) {
-                  linkProps.href = nav.to;
-                  linkProps.target = '_blank';
-                } else if (nav.external) {
-                  linkProps.href = nav.to;
-                } else {
-                  linkProps.to = nav.to;
-                }
-                return (
-                  <Menu.Item key={idx}>
-                    {linkProps.to ? (
-                      <Link {...linkProps}>
-                        {nav.icon ? (
-                          <FoundationSymbol type={nav.icon} size="small" />
-                        ) : null}
-                        {nav.name}
-                      </Link>
-                    ) : (
-                      <a {...linkProps}>
-                        {nav.icon ? (
-                          <FoundationSymbol type={nav.icon} size="small" />
-                        ) : null}
-                        {nav.name}
-                      </a>
-                    )}
-                  </Menu.Item>
-                );
-              })}
-            </Menu>
-          ) : null}
+          {/*{headerMenuConfig && headerMenuConfig.length > 0 ? (*/}
+            {/*<Menu mode="horizontal" selectedKeys={[]}>*/}
+              {/*{headerMenuConfig.map((nav, idx) => {*/}
+                {/*const linkProps = {};*/}
+                {/*if (nav.newWindow) {*/}
+                  {/*linkProps.href = nav.to;*/}
+                  {/*linkProps.target = '_blank';*/}
+                {/*} else if (nav.external) {*/}
+                  {/*linkProps.href = nav.to;*/}
+                {/*} else {*/}
+                  {/*linkProps.to = nav.to;*/}
+                {/*}*/}
+                {/*return (*/}
+                  {/*<Menu.Item key={idx}>*/}
+                    {/*{linkProps.to ? (*/}
+                      {/*<Link {...linkProps}>*/}
+                        {/*{nav.icon ? (*/}
+                          {/*<FoundationSymbol type={nav.icon} size="small" />*/}
+                        {/*) : null}*/}
+                        {/*{nav.name}*/}
+                      {/*</Link>*/}
+                    {/*) : (*/}
+                      {/*<a {...linkProps}>*/}
+                        {/*{nav.icon ? (*/}
+                          {/*<FoundationSymbol type={nav.icon} size="small" />*/}
+                        {/*) : null}*/}
+                        {/*{nav.name}*/}
+                      {/*</a>*/}
+                    {/*)}*/}
+                  {/*</Menu.Item>*/}
+                {/*);*/}
+              {/*})}*/}
+            {/*</Menu>*/}
+          {/*) : null}*/}
           {/* Header 菜单项 end */}
 
           {/* Header 右侧内容块 */}
@@ -72,23 +72,23 @@ export default class Header extends PureComponent {
                   fontSize: 12,
                 }}
               >
-                <IceImg
-                  height={40}
-                  width={40}
-                  src="https://img.alicdn.com/tfs/TB1L6tBXQyWBuNjy0FpXXassXXa-80-80.png"
-                  className="user-avatar"
-                />
+                {/*<IceImg*/}
+                  {/*height={40}*/}
+                  {/*width={40}*/}
+                  {/*src="https://img.alicdn.com/tfs/TB1L6tBXQyWBuNjy0FpXXassXXa-80-80.png"*/}
+                  {/*className="user-avatar"*/}
+                {/*/>*/}
                 <div className="user-profile">
                   <span className="user-name" style={{ fontSize: '13px' }}>
-                    淘小宝
+                    ADMIN
                   </span>
                   <br />
-                  <span
-                    className="user-department"
-                    style={{ fontSize: '12px', color: '#999' }}
-                  >
-                    技术部
-                  </span>
+                  {/*<span*/}
+                    {/*className="user-department"*/}
+                    {/*style={{ fontSize: '12px', color: '#999' }}*/}
+                  {/*>*/}
+                    {/*技术部*/}
+                  {/*</span>*/}
                 </div>
                 <Icon
                   type="arrow-down-filling"
