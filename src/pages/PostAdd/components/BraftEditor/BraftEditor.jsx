@@ -39,14 +39,15 @@ export default class CustomBraftEditor extends Component {
 
     uploadFn = (param) => {
 
-        const serverURL = 'http://api.okayapi.com/?s=App.User_Set.Add'
+        const serverURL = '/api/image/upload'
         const xhr = new XMLHttpRequest
-        const fd = new FormData()
+        // const fd = new FormData()
 
         // libraryId可用于通过mediaLibrary示例来操作对应的媒体内容
-        console.log(param)
+        console.log('uploadFn param is : ', param)
 
         const successFn = (response) => {
+            console.log('image upload response is : ', response)
             // 假设服务端直接返回文件上传后的地址
             // 上传成功后调用param.success并传入上传后的文件地址
             param.success({
@@ -80,9 +81,16 @@ export default class CustomBraftEditor extends Component {
         xhr.addEventListener("error", errorFn, false)
         xhr.addEventListener("abort", errorFn, false)
 
-        fd.append('file', param.file)
-        xhr.open('POST', serverURL, true)
-        xhr.send(fd)
+        // fd.append('file', param.file)
+        const reader = new FileReader();
+        reader.readAsDataURL(param.file);
+        reader.onload = function () {
+            xhr.open('POST', serverURL, true)
+            xhr.send(`${reader.result}`)
+        };
+        reader.onerror = function (error) {
+            console.log('Error: ', error);
+        };
 
     };
 
@@ -94,8 +102,8 @@ export default class CustomBraftEditor extends Component {
             onChange: this.props.onChange,
             onRawChange: this.handleRawChange,
             media: {
-                // validateFn: this.validateFn,
-                // uploadFn: this.uploadFn,
+                validateFn: this.validateFn,
+                uploadFn: this.uploadFn,
             }
         };
 
