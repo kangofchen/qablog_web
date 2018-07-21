@@ -96,7 +96,7 @@ export default class CustomBraftEditor extends Component {
 
     render() {
         const editorProps = {
-            height: 500,
+            height: 800,
             contentFormat: 'html',
             initialContent: '<p></p>',
             onChange: this.props.onChange,

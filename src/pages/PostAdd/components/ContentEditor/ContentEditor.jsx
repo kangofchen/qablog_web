@@ -8,6 +8,7 @@ import {
 } from '@icedesign/form-binder';
 
 import BraftEditor from "../BraftEditor/BraftEditor";
+import api from "../../../../utils/api";
 
 const {Row, Col} = Grid;
 const FormItem = Form.Item;
@@ -46,6 +47,11 @@ export default class ContentEditor extends Component {
             }
 
             // ajax values
+            api.post('/api/post/save',values).then((response) => {
+                console.log('post save response : ', response.data);
+            }).catch((error) => {
+                console.log(error);
+            });
         });
     };
 
