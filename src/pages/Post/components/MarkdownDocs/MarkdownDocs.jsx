@@ -1,71 +1,120 @@
-import React, { Component } from 'react';
-import ReactMarkdown from 'react-markdown';
+import React, {Component} from 'react';
+import IceContainer from '@icedesign/container';
 import './MarkdownDocs.scss';
+// import BraftEditor from 'braft-editor';
+import 'braft-editor/dist/braft.css';
+import analyse from "../../../../components/analyse";
+import api from "../../../../utils/api";
+import {Grid,Button} from '@icedesign/base';
 
-const initialSource = `
-# 开发者入驻
-
-## 产品定位
-
-支付宝小程序是一种全新的开放模式，它运行在支付宝客户端，可以被便捷地获取和传播，为终端用户提供更优的用户体验。小程序开放给开发者更多的JSAPI和OpenAPI能力，通过小程序可以为用户提供多样化便捷服务。
-
-支付宝小程序开放给企业帐号，想要成为支付宝小程序开发者，需要完成注册、入驻以及小程序创建三步。
-
-
-## 第一步：注册
-
-* 用【企业支付宝账号】登录开放平台 ；
-* 进入【小程序公测首页】 申请小程序公测，审核时间为1个工作日；
-
-> 注意1：公测期间尚未开放个人支付宝账户
-> 注意2：未注册企业支付宝账号请访问：注册企业支付宝账号
-
-## 第二步：入驻
-
-使用企业支付宝账户登录，依照入驻指引选择自己入驻的身份角色，完善身份信息，签署平台服务协议，成为开放平台合作伙伴。
-
-**1. 支付宝账号登录**
-
-![](https://gw.alipayobjects.com/zos/skylark/public/files/e3ecca36714dd5d0cc8ecca0f84c000a.png)
-
-**2. 选择入驻身份**
-
-![](https://gw.alipayobjects.com/zos/skylark/public/files/b39b0dfa0c13882e4ab7377fc9f194d0.png)
-
-**3. 完善信息**
-
-![](https://gw.alipayobjects.com/zos/skylark/public/files/af51a6e5c4c41089588b8a2ea9f4c993.png)
-
-## 第三步：登录小程序管理中心
-
-完成注册后，可以选择以下渠道进入小程序管理中心：
-
-* 通过小程序首页,点击“登录管理中心”，进入小程序管理中心，开始【创建小程】
-* 通过开放平台首页,点击"登录"，进入开放平台管理中心，选择“开发者中心／小程序”，开始【创建小程序】
-
-![](https://gw.alipayobjects.com/zos/skylark/public/files/5272d5041de283125ac03428a6e0ed4f.png)`;
-
-// const initialSourceHtml = `<div><p>test1</p><p>test2</p><p>test3</p></div>`;
+const {Row, Col} = Grid;
 
 export default class MarkdownDocs extends Component {
-  static displayName = 'MarkdownDocs';
+    static displayName = 'MarkdownDocs';
 
-  static propTypes = {};
+    static propTypes = {};
 
-  static defaultProps = {};
+    static defaultProps = {};
 
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+            post: {
+                title:'',
+                content:'',
+                tags:[{
+                    id:'',
+                    name:'',
+                }],
 
-  render() {
-    return (
-      <div>
-          {/*<pre>{initialSourceHtml}</pre>*/}
-          {/*<span dangerouslySetInnerHTML={{__html: initialSourceHtml}} />*/}
-        <ReactMarkdown className="markdown-docs-body" source={initialSource} />
-      </div>
-    );
-  }
+            },
+        };
+    }
+
+    componentWillMount() {
+        console.log(this.props)
+        analyse.send()
+        const {id:postId} = this.props.match.params
+
+        api.get(`/api/post/${postId}`).then((response) => {
+            console.log('postId response : ', response.data);
+            this.setState({
+                post: response.data,
+            })
+        }).catch((error) => {
+            console.log(error);
+        });
+    }
+
+    renderTag = (item, onClick) => {
+        return (
+            <Button size="small" onClick={onClick} key={item.id} style={styles.button}>
+                {item.name}
+            </Button>
+        );
+    };
+
+    handleTagClick = () => {
+
+    };
+
+    render() {
+        const {post} = this.state
+
+        // const editorPropsDisplay = {
+        //     height: 0,
+        //     contentFormat: 'html',
+        //     // disabled: true,
+        //     controls: [],
+        //     initialContent: post.content,
+        //     contentId: post.id,
+        // };
+
+        console.log('render post is : ', post)
+
+        return (
+            <IceContainer>
+
+                <Row wrap style={styles.content}>
+                    <Col l="4" xxs="24">
+                    </Col>
+                    <Col l="16" xxs="24">
+                        <div><h1>{post.title}</h1></div>
+                        <div>
+                            {post.tags.map((item) => {
+                                return this.renderTag(
+                                    item,
+                                    this.handleTagClick.bind(this, post.id, item),
+                                    post.id
+                                );
+                            })}
+                        </div>
+                        {/*<BraftEditor {...editorPropsDisplay} />*/}
+                        <span dangerouslySetInnerHTML={{__html: post.content}} />
+                    </Col>
+                    <Col l="4" xxs="24">
+                    </Col>
+                </Row>
+
+            </IceContainer>
+        );
+
+        // return (
+        //   <div>
+        //       {/*<pre>{initialSourceHtml}</pre>*/}
+        //       {/*<span dangerouslySetInnerHTML={{__html: initialSourceHtml}} />*/}
+        //     <ReactMarkdown className="markdown-docs-body" source={initialSource} />
+        //
+        //   </div>
+        // );
+    }
 }
+
+const styles = {
+    content: {
+        alignItems: 'center',
+    },
+    button: {
+        marginRight: '10px',
+    },
+};

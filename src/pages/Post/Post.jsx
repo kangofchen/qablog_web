@@ -19,7 +19,7 @@ export default class Post extends Component {
         return (
             <div className="post-page">
                 <SimpleFooter/>
-                <MarkdownDocs/>
+                <MarkdownDocs {...this.props}/>
             </div>
         );
     }

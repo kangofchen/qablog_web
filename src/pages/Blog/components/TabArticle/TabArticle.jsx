@@ -2,42 +2,8 @@ import React, {Component} from 'react';
 import IceContainer from '@icedesign/container';
 import {enquireScreen} from 'enquire-js';
 import ArticleList from './ArticleList';
-
-const dataSource = [
-    {
-        id: 0,
-        title: '越夏越嗨皮-7月官方营销活动-技能提升方向',
-        description:
-            '商家通过V任务选择主播并达成合作，费用按照商品链接计算，一个商品为一个价格，建议主播在一场直播里最多接60个商品，并提供不少于两个小时的直播服务，每个商品讲解时间不少于5分钟。 ',
-        tags: ['直播', '大促', '简介'],
-        datetime: '2017年12月12日 18:00',
-        star: 130,
-        like: 233,
-        comment: 123,
-    },
-    {
-        id: 1,
-        title: '越夏越嗨皮-7月官方营销活动-技能提升方向',
-        description:
-            '商家通过V任务选择主播并达成合作，费用按照商品链接计算，一个商品为一个价格，建议主播在一场直播里最多接60个商品，并提供不少于两个小时的直播服务，每个商品讲解时间不少于5分钟。 ',
-        tags: ['直播', '大促', '简介'],
-        datetime: '2017年12月12日 18:00',
-        star: 130,
-        like: 233,
-        comment: 123,
-    },
-    {
-        id: 2,
-        title: '越夏越嗨皮-7月官方营销活动-技能提升方向',
-        description:
-            '商家通过V任务选择主播并达成合作，费用按照商品链接计算，一个商品为一个价格，建议主播在一场直播里最多接60个商品，并提供不少于两个小时的直播服务，每个商品讲解时间不少于5分钟。 ',
-        tags: ['直播', '大促', '简介'],
-        datetime: '2017年12月12日 18:00',
-        star: 130,
-        like: 233,
-        comment: 123,
-    },
-];
+import api from "../../../../utils/api";
+import analyse from "../../../../components/analyse";
 
 const ICON = {
     active: 'https://gw.alicdn.com/tfs/TB1bQQ4ihrI8KJjy0FpXXb5hVXa-20-24.png',
@@ -49,13 +15,21 @@ export default class TabArticle extends Component {
 
     constructor(props) {
         super(props);
+        this.queryCache = {};
         this.state = {
             isMobile: false,
+            pots: [],
+            number: null,
+            size: null,
+            total: null,
         };
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.enquireScreenRegister();
+        this.queryCache.page = 0;
+        this.fetchData(this.queryCache.page);
+        analyse.send()
     }
 
     enquireScreenRegister = () => {
@@ -68,7 +42,30 @@ export default class TabArticle extends Component {
         }, mediaCondition);
     };
 
+    changePage = (currentPage) => {
+        this.queryCache.page = currentPage - 1;
+        this.fetchData(this.queryCache.page);
+    };
+
+    fetchData = index => {
+        api.post(`/api/post/list/${index}`).then((response) => {
+            console.log('post list response : ', response.data);
+            this.setState({
+                posts: response.data.posts,
+                number: response.data.number,
+                size: response.data.size,
+                total: response.data.total,
+            })
+        }).catch((error) => {
+            console.log(error);
+        });
+    };
+
     render() {
+        console.log('to render page is : ', this.state)
+        if (!this.state.total) {
+            return null
+        }
         return (
             <div className="tab-article">
                 <IceContainer style={styles.tabList}>
@@ -83,16 +80,16 @@ export default class TabArticle extends Component {
                     <div style={styles.tab}>
                         最热 <img src={ICON.inactive} style={styles.icon} alt="最热"/>
                     </div>
-                    <div style={styles.tab}>
-                        距离截稿日期最近{' '}
-                        <img
-                            src={ICON.inactive}
-                            style={styles.icon}
-                            alt="距离截稿日期最近"
-                        />
-                    </div>
+                    {/*<div style={styles.tab}>*/}
+                        {/*距离截稿日期最近{' '}*/}
+                        {/*<img*/}
+                            {/*src={ICON.inactive}*/}
+                            {/*style={styles.icon}*/}
+                            {/*alt="距离截稿日期最近"*/}
+                        {/*/>*/}
+                    {/*</div>*/}
                 </IceContainer>
-                <ArticleList isMobile={this.state.isMobile} dataSource={dataSource}/>
+                <ArticleList {...this.state} isMobile={this.state.isMobile} changePage={this.changePage}/>
             </div>
         );
     }
